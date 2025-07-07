@@ -43,3 +43,4 @@ Use
 ```bash
 lake exe cache get
 ```
+to install Lean4 and Mathlib4.
