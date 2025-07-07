@@ -20,7 +20,7 @@ Use ```Ctrl + O + Enter``` to save and ```Ctrl + X``` to exit.
 
 Use ```source ~/.bashrc``` to let the code run.
 
-Close and restart Git Bash, and input
+Close and restart Git Bash, then input
 ```bash
 echo $http_proxy
 echo $https_proxy
@@ -29,7 +29,7 @@ to verify the net.
 
 ## clone the repository from remote
 
-Create a folder in disk D and enter. Then open git bash and input
+Create a folder in disk D and enter. Then opening git bash and input
 ```bash
 git clone https://github.com/leanprover-community/mathematics_in_lean.git
 ```
