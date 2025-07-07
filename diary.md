@@ -1,5 +1,8 @@
 # day1
-安装 lean4 相应的库：
+
+安装 Lean4 以及依赖
+
+## Install VSCode and install the extension lean4
 
 ## 设置命令行的网络代理
 
