@@ -63,3 +63,5 @@ is used to check the Tpye of an Object.
 >但是无法 check lean 中的一些语法命令，比如```#chcek```.
 
 ```:```用于声明类型，```:=```用于定义。
+
+常见的类型有自然数```\N```
