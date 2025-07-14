@@ -64,7 +64,97 @@ is used to check the Tpye of an Object.
 
 ```:```用于声明类型，```:=```用于定义。
 
-常见的类型有自然数
+常见的类型有自然数 **Nat**，而 Nat 在类型论中又为类型 **Type**. **命题证明**的类型为**命题**，命题的类型是**命题类型**。
+
+## 定义对象
+
 ```lean
-\N
+def a : A := sorry
 ```
+## 函数类型
+
+由类型 A，B 可得类型 $A\to B$ 也是类型，称为由 A 类型映射到 B 类型的函数类型 (Function Type). 其元素称为**函数 (Functions)**. $f: A \to B$
+
+函数的 Curry 化
+
+函数的定义
+
+```lean
+def f : A \to B := sorry
+def f (a : A) : B := sorry
+
+#check f (a) -- B
+#check f a -- B
+```
+## 求值
+
+```lean
+#eval 1 + 1 ---2
+```
+
+e.g.定义加法函数
+```lean
+def add1 : \N \to \N := fun n \mspdto n + 1 -- 这个没看懂
+def add2 (n : \N) : \N := n + 1
+```
+
+## 隐式参数
+
+```lean
+def h := add_comm 1 2
+#check h
+def f (a : ℕ)(b : ℕ)(h : a + b = b + a) : ℕ := a
+#eval f _ _ h
+def g {a : ℕ} {b} (h : a + b = b + a) : ℕ := a
+#eval g h
+def g' {a : ℕ} {b} (h : a + b = b + a) : ℕ := a
+#check g' (a := 1) (b := 2) sorry
+```
+
+## 命题类型
+
+命题类型记作```prop```,其元素为命题,命题的对象为证明.
+
+### 公理1.1 证明具有无关性
+
+### 定理声明
+
+```theorem```及其变体
+
+>```theorem```实际上是一个证明类型的对象?因为他的Type是一个命题.
+
+## Tactic Proof
+```by sorry```
+
+### rw(rewrite)
+
+```h : A = B```,```rq [h]```表示在 goal 中寻找左式并替换成右式.可以使用```at```来指定替换对象,也可以使用反箭头来改变替换方向.
+
+```lean
+-- Proof state: (h1 : A) ⊢ A
+ rw [h]-- Proof state: (h1 : A) ⊢ B
+ rw [h] at h1-- Proof state: (h1 : B) ⊢ B
+ rw [← h] at *-- Proof state: (h1 : A) ⊢ A
+```
+
+### calc
+处理传递的等式和不等式.
+```lean
+theorem th_name : a = z := by
+  calc
+    a = b := by sorry
+    _ = c := by sorry-- ...
+    _ = z := by sorry
+```
+
+### others
+
+ring, linarith, simp, norm_num, aesop, #help tactic
+
+## 一阶形式逻辑
+
+### 一阶逻辑算子
+蕴含,等价,合取,析取,否定,谓词,全称量化,存在量化
+
+```namespace```
+
