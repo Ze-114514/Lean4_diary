@@ -1,4 +1,4 @@
-# day1
+# day0
 
 安装 Lean4 以及依赖
 
@@ -47,3 +47,19 @@ Use
 lake exe cache get
 ```
 to install Lean4 and Mathlib4.
+
+# day1
+
+## 类型论
+
+为**对象（Object）**赋予**类型（Type）**，记作 ```a:A```，即 Object a has Type A. Now a is a term/element/instance of A.
+
+```lean
+#check a
+```
+
+is used to check the Tpye of an Object.
+
+>但是无法 check lean 中的一些语法命令，比如```#chcek```.
+
+```:```用于声明类型，```:=```用于定义。
