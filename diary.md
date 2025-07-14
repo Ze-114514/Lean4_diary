@@ -64,4 +64,7 @@ is used to check the Tpye of an Object.
 
 ```:```用于声明类型，```:=```用于定义。
 
-常见的类型有自然数```\N```
+常见的类型有自然数
+```lean
+\N
+```
