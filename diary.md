@@ -194,6 +194,8 @@ LRoC：若 hp 可完成结论的证明，则 (h : p ∧ q) 也可完成结论的
 
 ### apply
 
+LRoI：若有 hp，则可用 h : p → q 得到 hq.
+
 ```apply``` tactic 来应用蕴含假设。
 
 ```lean
@@ -202,7 +204,38 @@ theorem Imp_apply (hp : p) (h : p → q) : q := by
     exact hp
 ```
 
-LRoI：若有 hp，则可用 h : p → q 得到 hq.
+### left / right
+
+RRoD：由 hp 可构造 (h : p ∨ q).
+
+```lean
+theorem Disj_left (hp : p) : p ∨ q := by
+    left
+    exact hp
+```
+
+### obtain, rcases
+
+LRoD：为了由 h 得到 hr，只需要由 hp 得到 hr 且 hq 得到 hr.
+
+```obtain``` ```rcases``` 可对析取提供分类讨论
+
+```lean
+theorem Disj_obtain (h : p ∨ q)(pr : p → r)(qr : q → r): r := by
+    obtain hp | hq := h
+    . exact pr hp
+    . exact qr hq
+```
+
+### intro
+
+RRoUQ：为证明 ∀ x ：α, p x，用 intro 取出一个特定的 x，再由 (hp : p a) 完成证明。
+
+### use
+
+### case
+
+
 
 ## 一阶形式逻辑
 
