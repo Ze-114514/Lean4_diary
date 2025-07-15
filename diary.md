@@ -123,6 +123,16 @@ def g' {a : ℕ} {b} (h : a + b = b + a) : ℕ := a
 
 >```theorem```实际上是一个证明类型的对象?因为他的Type是一个命题.
 
+### 全局变量声明
+
+```lean
+-- variable (p q : Prop)
+variable {p q r : Prop}
+theorem pq : p → q := by sorry --若使用显式变量，需要在定义 pq 时声明所需参数，比如 theorem pq (p q : Prop) : p → q := by sorry
+#check pq
+theorem sth (hp : p) : q := pq hp
+```
+
 ## Tactic Proof
 ```by sorry```
 
@@ -150,6 +160,39 @@ theorem th_name : a = z := by
 ### others
 
 ring, linarith, simp, norm_num, aesop, #help tactic
+
+### have
+
+切割规则（Cut）：构造一个引理，即为证明 q，只需证明 p，再用 p 证明 q.
+
+```lean
+theorem th_name {p : Prop} : q := by
+    have hp : p := by sorry
+    #check hp
+    sorry
+```
+
+### constructor
+
+合取右规则（RRoC）：要证明```p ∧ q```，只需分别证明 p, q.
+
+```lean
+theorem Conj_constructor (hp : p) (hq : q) : p ∧ q := by
+    constructor
+    . exact hp
+    . exact hq
+```
+
+```lean
+theorem Conj_refine (hp : p) (hq : q) : p ∧ q := by
+    refine ⟨?_, ?_⟩
+    . exact hp
+    . exact hq
+```
+
+LRoC：若 hp 可完成结论的证明，则 (h : p ∧ q) 也可完成结论的证明。
+
+LRoI：若有 hp，则可用 h : p → q 得到 hq.
 
 ## 一阶形式逻辑
 
