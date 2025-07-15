@@ -192,6 +192,16 @@ theorem Conj_refine (hp : p) (hq : q) : p ∧ q := by
 
 LRoC：若 hp 可完成结论的证明，则 (h : p ∧ q) 也可完成结论的证明。
 
+### apply
+
+```apply``` tactic 来应用蕴含假设。
+
+```lean
+theorem Imp_apply (hp : p) (h : p → q) : q := by
+    apply h
+    exact hp
+```
+
 LRoI：若有 hp，则可用 h : p → q 得到 hq.
 
 ## 一阶形式逻辑
