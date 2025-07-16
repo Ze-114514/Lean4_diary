@@ -1,1 +1,1 @@
-# Lean4_diary
+# Lean4
